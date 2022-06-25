@@ -1,0 +1,243 @@
+body {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 225, 255, 0.952);
+}
+
+header .titulo-principal{
+    text-align: center;
+}
+
+section h1{
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    /*color: #007bff;*/
+    /* color: #165ba5; */
+    color: #3f84ce;
+    margin: 40px 20px;;
+    text-shadow: 2.5px 2.5px 2.5px #000;
+}
+.conteudo-principal {
+    width: 100%;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.imgEdtReg{
+    width: 20%;
+    height: 70%;
+    margin: 0px;
+    margin-right: 10px;
+    margin-left: 8%;
+}
+.imgEdtReg label, .imgEdtReg input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+
+}
+
+.imgEdtReg img {
+    max-width: 100%;
+    max-height: 70%;
+    display: block;
+}
+
+.clienteInfos {
+    width: 30%;
+    top: 25px;
+    font-size: 15px;
+}
+
+.clienteInfos input {
+    display: inline;
+    margin-bottom: 5px;
+}
+
+.btnProcurar {
+    background-color: #007bff; 
+    border-radius: 15%;
+    color: #FFF;
+    box-shadow: 2.5px 2.5px 2.5px #000;
+    cursor: pointer;
+    padding: 3px 3px;
+    transition: all ease-in 0.5s;
+    border: 2px ridge #fff;
+}
+
+.btnProcurar:link{
+   text-decoration: none;
+}
+
+.btnProcurar:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+
+
+#cb_pais, #cb_estado, #cb_cidade {
+    background-color: #007bff; 
+    color: #FFF;
+    box-shadow: 2.5px 2.5px 2.5px #000;
+    border-radius: 15%;
+    border: 2px ridge #fff;
+}
+
+.telContato1, .telContato2 {
+    width: 40%;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.telContato1 input {
+    width: 100%;
+}
+.telContato2 input {
+ width: 100%;
+}
+
+.clienteInfos.-inlineCont label input {
+    width: 50%;
+}
+
+.clienteInfos label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.clienteMoradia {
+    width: 30%;
+    top: 25px;
+    font-size: 15px;
+}
+.clienteMoradia label{
+   margin-bottom: 2px;
+   margin-top: 3px;
+} 
+.form--row{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.nomeCompletoDiv label {
+    display: block;
+}
+.nomeCompletoDiv input {
+    display: inline;
+}
+
+.btn--row {
+    display: flex;
+    width: 50%;
+    margin: auto;
+    top: 20px;
+    transform: translateX(-60px)
+}
+
+.btnRegistrar, .btnAtualizar, .btnDeletar, .btnLimpar {
+    flex: 1;
+    margin-right: 15px;
+    background-color: #007bff; 
+    border-radius: 15%;
+    color: #FFF;
+    box-shadow: 2.5px 2.5px 2.5px #000;
+    cursor: pointer;
+    /*font-family: Fira Code, cursive;*/
+    font-family: 'Press Start 2P', cursive;
+    font-size: 100%;
+    font-weight: 800;
+    border: 2px ridge #fff;
+    text-shadow: 2.5px 2.5px 2.5px #000;
+    padding: 2px 4px;
+}
+
+.btnRegistrar {
+
+}
+
+.btnAtualizar {
+
+}
+
+.btnDeletar {
+
+}
+
+.btnLimpar {
+
+}
+
+.-bold {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.-pressStart2p {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.-colorRed {
+    color: rgb(255, 43, 43);
+    text-shadow: 1px 1px 2.5px rgb(253, 60, 60);
+}
+
+/* Eventos */
+
+
+/* Sucesso na operação (CRUD) */
+
+#h1SucessResult {
+    position: absolute;
+    font-size: 60px;
+    font-weight: 800;
+    font-family: 'Press Start 2P', cursive;
+    color: green;
+    width: 100%;
+    text-align: center;
+    animation-duration: 5s;
+    animation-name: resultCrud;
+    top: 30%;
+    z-index: 99;
+    text-shadow: 2.5px 2.5px 2.5px #000;
+}
+
+#h1FailResult {
+    position: absolute;
+    font-size: 60px;
+    font-weight: 800;
+    font-family: 'Press Start 2P', cursive;
+    color: red;
+    width: 100%;
+    text-align: center;
+    animation-duration: 5s;
+    animation-name: resultCrud;
+    top: 30%;
+    z-index: 99;
+    text-shadow: 2.5px 2.5px 2.5px #000;
+}
+
+  
+  @keyframes resultCrud {
+    from {
+      font-size: 200%;
+    }
+  
+    to {
+      font-size: 1000%;
+    }
+  }
+
+
+  
+  
