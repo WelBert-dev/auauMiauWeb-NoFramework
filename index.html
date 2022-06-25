@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- acrescimos para bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- dependencias do bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/@popperjs/core@2"> </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
+    <link href="./styles/style.css" rel="stylesheet" />
+
+    <!-- dependencia do datatable -->
+    <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/manterClienteView.js"></script>
+    <title>Dr. Auau Miau</title>
+</head>
+<body>
+    <header class="cabeçalho">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand logo" href="#">
+                    <i class="fas fa-hiking"></i>
+                    Dr. Auau Miau
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/manterClienteView.html" onclick="setCurrentDate()">Cliente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/manterAnimaisView.html">Animal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/manterFuncionariosView.html">Funcionário</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/manterCirurgiasView.html">Cirurgia</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="container--principal">
+        <h1 class="titulo--principal">Clínica Dr. Auau Miau</h1>
+        <div class="grid--principal">
+            <table class="table table-bordered table-striped" id="grid">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="text-center">
+                    Descrição<br>
+                    <small>pequeno resumo da cirurgia</small>
+                  </th>
+                  <th class="text-center">
+                    Veterinário<br>
+                    <small>Responsável pelo procedimento</small>
+                  </th>
+                  <th class="text-center">
+                    Nome do animal e dono<br>
+                    <small>Exemplo: chulika/Bruno Santos</small>
+                  </th>
+                  <th class="text-center">
+                    Status<br>
+                    <small>Em Processo/Finalizado/Cancelado/Re-Marcado/Óbito</small>
+                  </th>
+                  <th class="text-center">
+                    ID da Cirurgia<br>
+                    <small>Número de identificação</small>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th class="text-nowrap" scope="row">7:00 às 8:00</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th class="text-nowrap" scope="row">8:00 às 9:00</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th class="text-nowrap" scope="row">9:00 às 10:00</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th class="text-nowrap" scope="row">10:00 às 11:00</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th class="text-nowrap" scope="row">11:00 às 12:00</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th class="text-nowrap" scope="row">13:00 às 14:00</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th class="text-nowrap" scope="row">14:00 às 15:00</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th class="text-nowrap" scope="row">15:00 às 16:00</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th class="text-nowrap" scope="row">16:00 às 17:00</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <nav>
+              <ul class="pagination">
+                <li class="page-item active" onclick="ativado(this)"><a class="page-link">Segunda-Feira</a></li>
+                <li class="page-item" onclick="ativado(this)"><a class="page-link">Terça-Feira</a></li>
+                <li class="page-item" onclick="ativado(this)"><a class="page-link">Quarta-Feira</a></li>
+                <li class="page-item" onclick="ativado(this)"><a class="page-link">Quinta-Feira</a></li>
+                <li class="page-item" onclick="ativado(this)"><a class="page-link">Sexta-Feira</a></li>
+                <li class="page-item" onclick="ativado(this)"><a class="page-link">Sabádo</a></li>
+              </ul>
+            </nav>
+        </div>
+    </section>
+</body>
+</html>
