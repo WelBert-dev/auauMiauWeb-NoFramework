@@ -288,7 +288,7 @@ function handleBtnDeletarClick()
     {
         if(window.confirm("È necessário informar o CPF do cliente que deseja realizar a deleção!\nDeseja deletar TODOS os clientes?"))
         {
-            const dbClient = [{}];
+            const dbClient = [];
             setLocalStorage(dbClient);
             console.log(readClient());
             return;
@@ -358,25 +358,115 @@ function handleBtnProcurarNomeClick()
     try 
     {
         var objInputNome = document.getElementById("nomeInput");
-        
-        console.log(String(objInputNome.value));
+        var listaClientes = readClient(); 
 
-        if (listaClientes.length === 1)
+        if (listaClientes.length == 0)
         {   // nenhum cliente foi registrado ainda!
+
             window.alert("Nenhum cliente foi adicionado ainda! ;-;");
+
+            if (document.getElementById("tBodyModalProcurar") !== undefined) 
+            {
+                document.getElementById("tBodyModalProcurar").outerHTML = "";
+            }            
+
             return;
         }
-        else if (String(objInputNome.value) === "")
+        else if (String(objInputNome.value).replace(/ /g, "") === "")
         { // Retorna all clientes em janela modal
-            
+
+            atualizaTabelaModal(listaClientes);
         }
         else 
-        { // Consulta um cliente com o nome, se == 1 retorna informações, se +1 janela modal
+        { // Consulta um cliente com o nome
 
+            var listaClientesPeloNome = listaClientes.filter(x => x.nome === String(objInputNome.value).replace(/ /g, ""));
+            atualizaTabelaModal(listaClientesPeloNome);
         }
     }
     catch (ex) 
     {
-
+        console.log(ex);
     }
+}
+
+function handleBtnProcurarCPFClick()
+{
+    try 
+    {
+        var objInputCpf = document.getElementById("cpfInput");
+        var listaClientes = readClient(); 
+
+        if (listaClientes.length === 0)
+        {   // nenhum cliente foi registrado ainda!
+
+            window.alert("Nenhum cliente foi adicionado ainda! ;-;");
+
+            document.getElementById("modalProcurar").outerHTML = "";
+
+            if (document.getElementById("tBodyModalProcurar") !== undefined) 
+            {
+                document.getElementById("tBodyModalProcurar").outerHTML = "";
+            }            
+
+            return;
+        }
+        else if (String(objInputCpf.value).replace(/ /g, "") === "")
+        { // Retorna all clientes em janela modal
+
+            atualizaTabelaModal(listaClientes);
+        }
+        else 
+        { // Consulta um cliente com o cpf
+
+            var listaClientesPeloNome = listaClientes.filter(x => x.cpf === String(objInputCpf.value).replace(/ /g, ""));
+            atualizaTabelaModal(listaClientesPeloNome);
+        }
+    }
+    catch (ex) 
+    {
+        console.log(ex);
+    }
+}
+
+function atualizaTabelaModal(listaClientes)
+{
+    if (document.getElementById("tBodyModalProcurar") !== undefined) 
+    {
+        document.getElementById("tBodyModalProcurar").outerHTML = "";
+    }
+
+    var objModalProcurarDiv = document.createElement("tbody");
+    objModalProcurarDiv.setAttribute("id", "tBodyModalProcurar");
+
+    for (let i = 0; i < listaClientes.length; i++)
+    {
+        var filhoTr = document.createElement("tr");
+        filhoTr.setAttribute("id", "trProcurar"+(i+1));
+
+        var filhoTdNome = document.createElement("td");
+        filhoTdNome.appendChild(document.createTextNode(listaClientes[i].nome));
+
+        var filhoTdCPF = document.createElement("td");
+        filhoTdCPF.appendChild(document.createTextNode(listaClientes[i].cpf));
+
+        var filhoTdDtNasc = document.createElement("td");
+        filhoTdDtNasc.appendChild(document.createTextNode(listaClientes[i].dtNasc));
+
+        var filhoTdSexo = document.createElement("td");
+        filhoTdSexo.appendChild(document.createTextNode(listaClientes[i].sexo));
+
+        var filhoTdEmail = document.createElement("td");
+        filhoTdEmail.appendChild(document.createTextNode(listaClientes[i].email));
+
+
+        filhoTr.appendChild(filhoTdNome);
+        filhoTr.appendChild(filhoTdCPF);
+        filhoTr.appendChild(filhoTdDtNasc);
+        filhoTr.appendChild(filhoTdSexo);
+        filhoTr.appendChild(filhoTdEmail);
+
+        objModalProcurarDiv.appendChild(filhoTr);
+    }
+    document.getElementById("tabelaProcurar").appendChild(objModalProcurarDiv);    
 }
