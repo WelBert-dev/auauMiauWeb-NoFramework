@@ -9,37 +9,37 @@ class Moradia
     endereco; // endereco 
     cep; // cep
     
-    getPais() {
+    get getPais() {
         return pais;
     }
     setPais(pais) {
         this.pais = pais;
     }
-    getEstado() {
+    get getEstado() {
         return estado;
     }
     setEstado(estado) {
         this.estado = estado;
     }
-    getLogradouro() {
+    get getLogradouro() {
         return logradouro;
     }
     setLogradouro(logradouro) {
         this.logradouro = logradouro;
     }
-     getBairro() {
+    get getBairro() {
         return bairro;
     }
     setBairro(bairro) {
         this.bairro = bairro;
     }
-     getEndereco() {
+    get getEndereco() {
         return endereco;
     }
     setEndereco(endereco) {
         this.endereco = endereco;
     }
-    getCep() {
+    get getCep() {
         return cep;
     }
     setCep(cep) {
@@ -61,43 +61,43 @@ class Cliente
     moradia;
 
 
-    getCpf() {
+    get getCpf() {
         return cpf;
     }
     setCpf(cpf) {
         this.cpf = cpf;
     }
-    getNome() {
+    get getNome() {
         return nome;
     }
     setNome(nome) {
         this.nome = nome;
     }
-    getDtNasc() {
+    get getDtNasc() {
         return dtNasc;
     }
     setDtNasc(dtNasc) {
         this.dtNasc = dtNasc;
     }
-    getDtReg() {
-        return dtReg;
+    get getDtReg() {
+        return this.dtReg;
     }
     setDtReg(dtReg) {
         this.dtReg = dtReg;
     }
-    getTelCont1() {
+    get getTelCont1() {
         return telCont1;
     }
     setTelCont1(telCont1) {
         this.telCont1 = telCont1;
     }
-    getTelCont2() {
+    get getTelCont2() {
         return telCont2;
     }
     setTelCont2(telCont2) {
         this.telCont2 = telCont2;
     }
-    getEmail() {
+    get getEmail() {
         return email;
     }
     setEmail(email) {
@@ -107,7 +107,7 @@ class Cliente
     {
         this.sexo = sexo;
     }
-    getSexo()
+    get getSexo()
     {
         return sexo;
     }
@@ -115,7 +115,7 @@ class Cliente
     {
         this.moradia = moradia;
     }
-    getMoradia()
+    get getMoradia()
     {
         return this.moradia;
     }
@@ -189,9 +189,9 @@ function handleBtnRegistrarClick()
         cliente.setTelCont2(document.getElementById("telCont2Input").value);
         cliente.setEmail(document.getElementById("emailInput").value);
 
-        moradia.setPais(document.getElementById("cb_pais").options[document.getElementById("cb_pais").selectedIndex].text);
-        moradia.setEstado(document.getElementById("cb_estado").options[document.getElementById("cb_estado").selectedIndex].text);
-        moradia.setLogradouro(document.getElementById("cb_cidade").options[document.getElementById("cb_cidade").selectedIndex].text);
+        moradia.setPais(document.getElementById("cb_pais").options[document.getElementById("cb_pais").selectedIndex].value);
+        moradia.setEstado(document.getElementById("cb_estado").options[document.getElementById("cb_estado").selectedIndex].value);
+        moradia.setLogradouro(document.getElementById("cb_cidade").options[document.getElementById("cb_cidade").selectedIndex].value);
         moradia.setBairro(document.getElementById("bairroInput").value);
         moradia.setEndereco(document.getElementById("enderecoInput").value);
         moradia.setCep(document.getElementById("cepInput").value);
@@ -342,18 +342,24 @@ function handleBtnLimparClick()
 {
     document.getElementById("nomeInput").value = '';
     document.getElementById("cpfInput").value = '';
-    document.getElementById("dtNascInput)").value = new Date().getDate;
-    document.getElementById("dtReg").value = new Date().getDate();
-    document.getElementById("telCont1Input").value = '';
-    document.getElementById("telCont2Input").value = '';
-    document.getElementById("emailInput").value = '';
+    document.getElementById("dtNascInput").value = new Date().toJSON().slice(0,10);
+    document.getElementById("dtReg").value = new Date().toJSON().slice(0,10);
+    document.getElementById("RSM").checked = true; 
+    document.getElementById("telCont1Input").value = ''; 
+    document.getElementById("telCont2Input").value = ''; 
+    document.getElementById("emailInput").value = ''; 
+ 
+    document.getElementById("cb_pais").getElementsByTagName('option')[0].selected = true;
+    document.getElementById("cb_estado").getElementsByTagName('option')[0].selected = true;
+    document.getElementById("cb_cidade").getElementsByTagName('option')[0].selected = true;
 
-    document.getElementById("bairroInput").value = '';
-    document.getElementById("enderecoInput").value = '';
-    document.getElementById("cepInput").value = '';
+    document.getElementById("bairroInput").value = ''; 
+    document.getElementById("enderecoInput").value = ''; 
+    document.getElementById("cepInput").value = ''; 
+     
 }
 
-function handleBtnProcurarNomeClick()
+async function handleBtnProcurarNomeClick()
 {
     try 
     {
@@ -365,23 +371,42 @@ function handleBtnProcurarNomeClick()
 
             window.alert("Nenhum cliente foi adicionado ainda! ;-;");
 
-            if (document.getElementById("tBodyModalProcurar") !== undefined) 
+            if (document.getElementById("tBodyModalProcurar") !== null) 
             {
                 document.getElementById("tBodyModalProcurar").outerHTML = "";
             }            
 
+            if (document.getElementById("btnProcurarNome").getAttribute("data-target") !== undefined)
+            {
+                document.getElementById("btnProcurarNome").removeAttribute("data-target");
+                console.log("Removeu o atributo data-target");
+            }
             return;
         }
         else if (String(objInputNome.value).replace(/ /g, "") === "")
         { // Retorna all clientes em janela modal
 
             atualizaTabelaModal(listaClientes);
+            document.getElementById("btnProcurarNome").setAttribute("data-target", "#modalProcurar");
         }
         else 
         { // Consulta um cliente com o nome
 
             var listaClientesPeloNome = listaClientes.filter(x => x.nome === String(objInputNome.value).replace(/ /g, ""));
-            atualizaTabelaModal(listaClientesPeloNome);
+            if (!(listaClientesPeloNome.length == 0)) 
+            { // cliente não existe registro
+                
+                console.log("entrou no ultimo else");
+
+                atualizaTabelaModal(listaClientesPeloNome);
+                document.getElementById("btnProcurarNome").setAttribute("data-target", "#modalProcurar");             
+            }
+            else
+            {
+                document.getElementById("nomeInput").style.borderColor = '#F00';
+                await sleep(5000);
+                document.getElementById("nomeInput").style.borderColor = '#FFF';
+            }
         }
     }
     catch (ex) 
@@ -390,7 +415,7 @@ function handleBtnProcurarNomeClick()
     }
 }
 
-function handleBtnProcurarCPFClick()
+async function handleBtnProcurarCPFClick()
 {
     try 
     {
@@ -402,12 +427,16 @@ function handleBtnProcurarCPFClick()
 
             window.alert("Nenhum cliente foi adicionado ainda! ;-;");
 
-            document.getElementById("modalProcurar").outerHTML = "";
-
-            if (document.getElementById("tBodyModalProcurar") !== undefined) 
+            if (document.getElementById("tBodyModalProcurar") !== null) 
             {
                 document.getElementById("tBodyModalProcurar").outerHTML = "";
             }            
+
+            if (document.getElementById("btnProcurarCPF").getAttribute("data-target") !== undefined)
+            {
+                document.getElementById("btnProcurarCPF").removeAttribute("data-target");
+                console.log("Removeu o atributo data-target");
+            }
 
             return;
         }
@@ -415,12 +444,27 @@ function handleBtnProcurarCPFClick()
         { // Retorna all clientes em janela modal
 
             atualizaTabelaModal(listaClientes);
+            document.getElementById("btnProcurarCPF").setAttribute("data-target", "#modalProcurar");
         }
         else 
         { // Consulta um cliente com o cpf
 
-            var listaClientesPeloNome = listaClientes.filter(x => x.cpf === String(objInputCpf.value).replace(/ /g, ""));
-            atualizaTabelaModal(listaClientesPeloNome);
+            var listaClientesPeloCPF = listaClientes.filter(x => x.cpf === String(objInputCpf.value).replace(/ /g, ""));
+            
+            if (!(listaClientesPeloCPF.length == 0)) 
+            { // cliente não existe registro
+                
+                console.log("entrou no ultimo else");
+
+                atualizaTabelaModal(listaClientesPeloCPF);
+                document.getElementById("btnProcurarCPF").setAttribute("data-target", "#modalProcurar");             
+            }
+            else
+            {
+                document.getElementById("cpfInput").style.borderColor = '#F00';
+                await sleep(5000);
+                document.getElementById("cpfInput").style.borderColor = '#FFF';
+            }        
         }
     }
     catch (ex) 
@@ -431,35 +475,129 @@ function handleBtnProcurarCPFClick()
 
 function atualizaTabelaModal(listaClientes)
 {
-    if (document.getElementById("tBodyModalProcurar") !== undefined) 
+    if (document.getElementById("tBodyModalProcurar") !== null) 
     {
+        console.log(typeof document.getElementById("tBodyModalProcurar"))
         document.getElementById("tBodyModalProcurar").outerHTML = "";
     }
 
     var objModalProcurarDiv = document.createElement("tbody");
     objModalProcurarDiv.setAttribute("id", "tBodyModalProcurar");
 
+
     for (let i = 0; i < listaClientes.length; i++)
     {
-        var filhoTr = document.createElement("tr");
-        filhoTr.setAttribute("id", "trProcurar"+(i+1));
+        if (i % 2 == "0") 
+        { // par
+            if (i == 0)
+            {
+                var filhoTr = document.createElement("tr");
+                filhoTr.setAttribute("id", "trProcurar"+(i + 1));
+        
+                var filhoRadio = document.createElement("input");
+                filhoRadio.setAttribute("type", "radio");
+                filhoRadio.setAttribute("name", "RCliente");
+                filhoRadio.setAttribute("checked", true);
+                filhoRadio.classList.add("-bgCian");
+                filhoRadio.value =  readClient().findIndex(x => x.cpf === String(listaClientes[i].cpf));
+        
+                var filhoTdRadio = document.createElement("td");
+                filhoTdRadio.classList.add("-bgCian");
+                filhoTdRadio.appendChild(filhoRadio);
+        
+                var filhoTdNome = document.createElement("td");
+                filhoTdNome.classList.add("-bgCian");
+                filhoTdNome.appendChild(document.createTextNode(listaClientes[i].nome));
+        
+                var filhoTdCPF = document.createElement("td");
+                filhoTdCPF.classList.add("-bgCian");
+                filhoTdCPF.appendChild(document.createTextNode(listaClientes[i].cpf));
+        
+                var filhoTdDtNasc = document.createElement("td");
+                filhoTdDtNasc.classList.add("-bgCian");
+                filhoTdDtNasc.appendChild(document.createTextNode(listaClientes[i].dtNasc));
+        
+                var filhoTdSexo = document.createElement("td");
+                filhoTdSexo.classList.add("-bgCian");
+                filhoTdSexo.appendChild(document.createTextNode(listaClientes[i].sexo));
+        
+                var filhoTdEmail = document.createElement("td");
+                filhoTdEmail.classList.add("-bgCian");
+                filhoTdEmail.appendChild(document.createTextNode(listaClientes[i].email));
+            }
+            else
+            {
+                var filhoTr = document.createElement("tr");
+                filhoTr.setAttribute("id", "trProcurar"+(i + 1));
+        
+                var filhoRadio = document.createElement("input");
+                filhoRadio.setAttribute("type", "radio");
+                filhoRadio.setAttribute("name", "RCliente");
+                filhoRadio.classList.add("-bgCian");
+                filhoRadio.value =  readClient().findIndex(x => x.cpf === String(listaClientes[i].cpf));
+        
+                var filhoTdRadio = document.createElement("td");
+                filhoTdRadio.classList.add("-bgCian");
+                filhoTdRadio.appendChild(filhoRadio);
+        
+                var filhoTdNome = document.createElement("td");
+                filhoTdNome.classList.add("-bgCian");
+                filhoTdNome.appendChild(document.createTextNode(listaClientes[i].nome));
+        
+                var filhoTdCPF = document.createElement("td");
+                filhoTdCPF.classList.add("-bgCian");
+                filhoTdCPF.appendChild(document.createTextNode(listaClientes[i].cpf));
+        
+                var filhoTdDtNasc = document.createElement("td");
+                filhoTdDtNasc.classList.add("-bgCian");
+                filhoTdDtNasc.appendChild(document.createTextNode(listaClientes[i].dtNasc));
+        
+                var filhoTdSexo = document.createElement("td");
+                filhoTdSexo.classList.add("-bgCian");
+                filhoTdSexo.appendChild(document.createTextNode(listaClientes[i].sexo));
+        
+                var filhoTdEmail = document.createElement("td");
+                filhoTdEmail.classList.add("-bgCian");
+                filhoTdEmail.appendChild(document.createTextNode(listaClientes[i].email));
+            }
+        }
+        else 
+        { // impar 007bff azul bunitu
+            var filhoTr = document.createElement("tr");
+            filhoTr.setAttribute("id", "trProcurar"+(i+1));
+    
+            var filhoRadio = document.createElement("input");
+            filhoRadio.setAttribute("type", "radio");
+            filhoRadio.setAttribute("name", "RCliente");
+            filhoRadio.classList.add("-bgCianDark");
+            filhoRadio.value =  readClient().findIndex(x => x.cpf === String(listaClientes[i].cpf));
+    
+            var filhoTdRadio = document.createElement("td");
+            filhoTdRadio.classList.add("-bgCianDark");
+            filhoTdRadio.appendChild(filhoRadio);
+    
+            var filhoTdNome = document.createElement("td");
+            filhoTdNome.classList.add("-bgCianDark");
+            filhoTdNome.appendChild(document.createTextNode(listaClientes[i].nome));
+    
+            var filhoTdCPF = document.createElement("td");
+            filhoTdCPF.classList.add("-bgCianDark");
+            filhoTdCPF.appendChild(document.createTextNode(listaClientes[i].cpf));
+    
+            var filhoTdDtNasc = document.createElement("td");
+            filhoTdDtNasc.classList.add("-bgCianDark");
+            filhoTdDtNasc.appendChild(document.createTextNode(listaClientes[i].dtNasc));
+    
+            var filhoTdSexo = document.createElement("td");
+            filhoTdSexo.classList.add("-bgCianDark");
+            filhoTdSexo.appendChild(document.createTextNode(listaClientes[i].sexo));
+    
+            var filhoTdEmail = document.createElement("td");
+            filhoTdEmail.classList.add("-bgCianDark");
+            filhoTdEmail.appendChild(document.createTextNode(listaClientes[i].email));
+        }
 
-        var filhoTdNome = document.createElement("td");
-        filhoTdNome.appendChild(document.createTextNode(listaClientes[i].nome));
-
-        var filhoTdCPF = document.createElement("td");
-        filhoTdCPF.appendChild(document.createTextNode(listaClientes[i].cpf));
-
-        var filhoTdDtNasc = document.createElement("td");
-        filhoTdDtNasc.appendChild(document.createTextNode(listaClientes[i].dtNasc));
-
-        var filhoTdSexo = document.createElement("td");
-        filhoTdSexo.appendChild(document.createTextNode(listaClientes[i].sexo));
-
-        var filhoTdEmail = document.createElement("td");
-        filhoTdEmail.appendChild(document.createTextNode(listaClientes[i].email));
-
-
+        filhoTr.appendChild(filhoRadio);
         filhoTr.appendChild(filhoTdNome);
         filhoTr.appendChild(filhoTdCPF);
         filhoTr.appendChild(filhoTdDtNasc);
@@ -468,5 +606,82 @@ function atualizaTabelaModal(listaClientes)
 
         objModalProcurarDiv.appendChild(filhoTr);
     }
+
     document.getElementById("tabelaProcurar").appendChild(objModalProcurarDiv);    
 }
+
+function sleep(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
+function handleBtnConfirmarProcuraClick()
+{
+    // trProcurar1
+    let indexOfCliente = document.querySelector('input[name="RCliente"]:checked').value;
+    console.log(indexOfCliente);
+
+    var cliente = new Cliente();
+    cliente = readClient()[indexOfCliente];
+
+    document.getElementById("dtReg").value = cliente.dtReg;
+    document.getElementById("nomeInput").value = cliente.nome;
+    document.getElementById("cpfInput").value = cliente.cpf;
+    document.getElementById("dtNascInput").value = cliente.dtNasc;
+
+    if (cliente.sexo == "M")
+    {
+        document.getElementById("RSM").checked = true;
+    }
+    else
+    {
+        document.getElementById("RSF").checked = true;
+    }
+
+
+    document.getElementById("telCont1Input").value = cliente.telCont1;
+    document.getElementById("telCont2Input").value = cliente.telCont2;
+    document.getElementById("emailInput").value = cliente.email;
+
+    var objSelectPais = document.getElementById("cb_pais");
+   // console.log(objSelectPais.options[objSelectPais.selectedIndex]);
+    for (var i = 0; i<objSelectPais.getElementsByTagName('option').length; i++)
+    {
+        if (objSelectPais.getElementsByTagName('option')[i].value == cliente.moradia.pais)
+        {
+            objSelectPais.getElementsByTagName('option')[i].selected = true;
+        }
+    }
+
+    var objSelectEstado = document.getElementById("cb_estado");
+    for (var i = 0; i < objSelectEstado.getElementsByTagName('option').length; i++)
+    {
+        if (objSelectEstado.getElementsByTagName('option')[i].value == cliente.moradia.estado)
+        {
+            objSelectEstado.getElementsByTagName('option')[i].selected = true;
+        }
+    }
+
+    var objSelectCidade = document.getElementById("cb_cidade");
+    for (var i = 0; i < objSelectCidade.getElementsByTagName('option').length; i++)
+    {
+        if (objSelectCidade.getElementsByTagName('option')[i].value == cliente.moradia.logradouro)
+        {
+            objSelectCidade.getElementsByTagName('option')[i].selected = true;
+        }
+    }
+
+    document.getElementById("bairroInput").value = cliente.moradia.bairro;
+    document.getElementById("enderecoInput").value = cliente.moradia.endereco;
+    document.getElementById("cepInput").value = cliente.moradia.cep;
+    
+}
+
+// Evento onload da pag 
+
+function inicia() 
+{
+    console.log(document.getElementById("dtReg").value);
+    document.getElementById("dtReg").value = new Date().toJSON().slice(0,10);
+}
+
+document.addEventListener("load", inicia());
