@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Press+Start+2P&display=swap" rel="stylesheet"> 
 
-    <script src="../js/manterClienteView.js" type="text/javascript"></script>
+    <script src="../js/manterClienteView.js" type="text/javascript" ferer></script>
 
     <title>Área do Cliente</title>
 </head>
@@ -68,16 +68,16 @@
                     <div class="nomeCompletoDiv">
                         <label class="-bold"><span class="-colorRed">* </span>Nome Completo:</label>
                         <input id="nomeInput" type="text" required placeholder="Digíte seu nome completo"/>
-                        <a href="#" class="btnProcurar" type="button" data-toggle="modal"
-                            data-target="#modalProcurar" onclick="handleBtnProcurarNomeClick()"
+                        <a href="#" id="btnProcurarNome" class="btnProcurar" type="button" data-toggle="modal"
+                         onclick="handleBtnProcurarNomeClick()"
                                 >Procurar
                         </a>                  
                     </div>
                     <div id="cpf">
                         <label class="-bold"><span class="-colorRed">* </span>CPF:</label>
                         <input id="cpfInput" type="text" placeholder="Digíte seu CPF completo"/>
-                        <a href="#" class="btnProcurar" type="button" data-toggle="modal"
-                            data-target="#modalProcurar" onclick="handleBtnProcurarCPFClick()"
+                        <a href="#" id="btnProcurarCPF" class="btnProcurar" type="button" data-toggle="modal"
+                        onclick="handleBtnProcurarCPFClick()"
                                 >Procurar
                         </a>  
                     </div>
@@ -87,8 +87,8 @@
                     </div>
                     <div id="sexo">
                         <label class="-bold">Sexo:</label>
-                        <input type="radio" name="Rsexo" value="M" checked/> Masculino
-                        <input type="radio" name="Rsexo" value="F"> Feminino
+                        <input id="RSM" type="radio" name="Rsexo" value="M" checked/> Masculino
+                        <input id="RSF" type="radio" name="Rsexo" value="F"> Feminino
                     </div>
                     <div class="telContato1 -inlineCont"  id="telContato1">
                         <label class="-bold">Tel. Contato:</label>
@@ -107,10 +107,10 @@
                     <div id="pais">
                         <label class="-bold">Pais:</label></br>
                         <select id="cb_pais">
-                            <option name="cb_pais">
+                            <option name="cb_pais" value="BR">
                                 Brasil
                             </option>
-                            <option name="EUA">
+                            <option name="EUA" value="EUA">
                                 Estados Unidos
                             </option>
                         </select>
@@ -155,14 +155,14 @@
         </form>
 
         <div class="btn--row">
-            <button id="btnRegistrar" class="btnRegistrar" type="submit" onclick="handleBtnRegistrarClick()">Registrar</button>
-            <button class="btnAtualizar" type="submit" onclick="handleBtnAtualizarClick()" >Atualizar</button>
-            <button class="btnDeletar" type="submit" onclick="handleBtnDeletarClick()">Deletar</button>
-            <button class="btnLimpar" type="submit" onclick="handleBtnLimparClick()">Limpar</button>
+            <button id="btnRegistrar" class="main-btn btnRegistrar" type="submit" onclick="handleBtnRegistrarClick()">Registrar</button>
+            <button class="main-btn btnAtualizar" type="submit" onclick="handleBtnAtualizarClick()" >Atualizar</button>
+            <button class="main-btn btnDeletar" type="submit" onclick="handleBtnDeletarClick()">Deletar</button>
+            <button class="main-btn btnLimpar" type="submit" onclick="handleBtnLimparClick()">Limpar</button>
         </div>
         <!-- Parei aqui -->
         <div class="modal fade" id="modalProcurar" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialogProcurar">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5
@@ -186,6 +186,7 @@
                         <table id="tabelaProcurar">
                             <thead>
                                 <tr>
+                                  <th class="-bgWhite"></th>
                                   <th class="text-center">
                                     Nome<br>
                                   </th>
@@ -205,6 +206,7 @@
                               </thead>
                               <tbody id="tBodyModalProcurar">
                                 <tr>
+                                  <td><input type="radio"></td>
                                   <td>cu</td>
                                   <td>lala</td>
                                   <td>paçoka</td>
@@ -215,15 +217,18 @@
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal"
+                        <button type="button"
+                                class="main-btn -mr2percent -bgColorRed"
+                                data-dismiss="modal"
                         >
                             Cancelar
                         </button>
-                        <button type="button" class="btn botao-cor-especial">
-                            Enviar Mensagem
+                        <button type="button" 
+                                class="main-btn -bgColorGreen"
+                                onclick="handleBtnConfirmarProcuraClick()"
+                                data-dismiss="modal"
+                        >
+                            Confirmar
                         </button>
                     </div>
                 </div>
