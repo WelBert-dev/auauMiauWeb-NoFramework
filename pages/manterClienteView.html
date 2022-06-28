@@ -63,6 +63,9 @@
                     <img src="https://i0.wp.com/cdn140.picsart.com/271823165011211.png?r1024x1024" />
                     <label class="-bold">Data de Registro:</label>
                     <input id="dtReg" type="date"/>
+                    <script type="text/javascript">
+                        document.getElementById("dtReg").value = new Date().toJSON().slice(0,10);
+                    </script>
                 </div>
                 <div class="clienteInfos">
                     <div class="nomeCompletoDiv">
