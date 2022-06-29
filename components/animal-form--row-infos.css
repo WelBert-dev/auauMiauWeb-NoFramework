@@ -1,0 +1,13 @@
+.animal-form--row-infos {
+
+}
+
+.animal-form--row-infos input {
+    display: inline;
+    margin-bottom: 5px;
+}
+
+.animal-form--row-infos label {
+    display: block;
+    margin-bottom: 2px;
+}

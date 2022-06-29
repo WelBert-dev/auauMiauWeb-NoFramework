@@ -1,0 +1,22 @@
+
+.-bold800--labels {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.-bgColorRed {
+    background-color: #f51f1fa8; 
+}
+
+.-bgColorGreen {
+    background-color: #91ff00; 
+}
+
+.-pressStart2p {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.-colorRed {
+    color: rgb(255, 43, 43);
+    text-shadow: 1px 1px 2.5px rgb(253, 60, 60);
+}

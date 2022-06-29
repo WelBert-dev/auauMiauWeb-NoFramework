@@ -1,0 +1,15 @@
+.cliente-form--row-infos {
+    width: 30%;
+    top: 25px;
+    font-size: 15px;
+}
+
+.cliente-form--row-infos input {
+    display: inline;
+    margin-bottom: 5px;
+}
+
+.cliente-form--row-infos label {
+    display: block;
+    margin-bottom: 2px;
+}

@@ -1,0 +1,19 @@
+.main-btnProcurar {
+    background-color: #007bff; 
+    border-radius: 15%;
+    color: #FFF;
+    box-shadow: 2.5px 2.5px 2.5px #000;
+    cursor: pointer;
+    padding: 3px 3px;
+    transition: all ease-in 0.5s;
+    border: 2px ridge #fff;
+}
+
+.main-btnProcurar:link{
+   text-decoration: none;
+}
+
+.main-btnProcurar:hover {
+    text-decoration: none;
+    color: #FFF;
+}

@@ -1,0 +1,10 @@
+.main-btn {
+    border-radius: 15%;
+    color: #FFF;
+    box-shadow: 2.5px 2.5px 2.5px #000;
+    cursor: pointer;
+    /*font-family: Fira Code, cursive;*/
+    font-family: 'Press Start 2P', cursive;
+    border: 2px ridge #fff;
+    text-shadow: 2.5px 2.5px 2.5px #000;
+}
