@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/manterClienteStyle.css">
     <!-- acrescimos para bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
    
@@ -23,6 +22,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Press+Start+2P&display=swap" rel="stylesheet"> 
 
     <script src="../js/manterClienteView.js" type="text/javascript" ferer></script>
+    <link rel="stylesheet" href="../styles/manterClienteStyle.css">
+    <link rel="stylesheet" href="../components/main-btn.css">
+    <link rel="stylesheet" href="../components/main-title.css">
+    <link rel="stylesheet" href="../components/main-section.css">
+    <link rel="stylesheet" href="../components/main-form.css">
+    <link rel="stylesheet" href="../components/main-form--row.css">
+    <link rel="stylesheet" href="../components/main-form--row-imgArea.css">
+    <link rel="stylesheet" href="../components/globais.css">
+    <link rel="stylesheet" href="../components/cliente-form--row-infos.css">
+    <link rel="stylesheet" href="../components/cliente-form--row-infosMoradia.css">
+    <link rel="stylesheet" href="../components/main-btnProcurar.css">
+    <link rel="stylesheet" href="../components/main-select.css">
+    <link rel="stylesheet" href="../components/main-btnRow.css">
 
     <title>Área do Cliente</title>
 </head>
@@ -54,62 +66,62 @@
             </div>
         </nav>
     </header>
-    <section id="conteudo-principal" class="conteudo-principal">
-        <h1>Área do Cliente</h1>
+    <section id="conteudo-principal" class="main-section">
+        <h1 class="main-title">Área do Cliente</h1>
 
-        <form class="formulario" id="formulario">
-            <div class="form--row">
-                <div class="imgEdtReg">
-                    <img src="https://i0.wp.com/cdn140.picsart.com/271823165011211.png?r1024x1024" />
-                    <label class="-bold">Data de Registro:</label>
+        <form class="main-form" id="formulario-cliente">
+            <div class="main-form--row">
+                <div class="main-form--row-imgArea cliente-form--row-imgArea">
+                    <img class="imgCliente" src="https://i0.wp.com/cdn140.picsart.com/271823165011211.png?r1024x1024" />
+                    <label class="-bold800--labels">Data de Registro:</label>
                     <input id="dtReg" type="date"/>
                     <script type="text/javascript">
                         document.getElementById("dtReg").value = new Date().toJSON().slice(0,10);
                     </script>
                 </div>
-                <div class="clienteInfos">
+                <div class="cliente-form--row-infos">
                     <div class="nomeCompletoDiv">
-                        <label class="-bold"><span class="-colorRed">* </span>Nome Completo:</label>
+                        <label class="-bold800--labels"><span class="-colorRed">* </span>Nome Completo:</label>
                         <input id="nomeInput" type="text" required placeholder="Digíte seu nome completo"/>
-                        <a href="#" id="btnProcurarNome" class="btnProcurar" type="button" data-toggle="modal"
+                        <a href="#" id="btnProcurarNome" class="main-btnProcurar" type="button" data-toggle="modal"
                          onclick="handleBtnProcurarNomeClick()"
                                 >Procurar
-                        </a>                  
+                        </a>                 
                     </div>
                     <div id="cpf">
-                        <label class="-bold"><span class="-colorRed">* </span>CPF:</label>
+                        <label class="-bold800--labels"><span class="-colorRed">* </span>CPF:</label>
                         <input id="cpfInput" type="text" placeholder="Digíte seu CPF completo"/>
-                        <a href="#" id="btnProcurarCPF" class="btnProcurar" type="button" data-toggle="modal"
+                        <a href="#" id="btnProcurarCPF" class="main-btnProcurar" type="button" data-toggle="modal"
                         onclick="handleBtnProcurarCPFClick()"
                                 >Procurar
                         </a>  
                     </div>
                     <div id="dataNasc">
-                        <label class="-bold"><span class="-colorRed">* </span>Data de Nascimento:</label>
+                        <label class="-bold800--labels"><span class="-colorRed">* </span>Data de Nascimento:</label>
                         <input type="date" id="dtNascInput"/>
                     </div>
                     <div id="sexo">
-                        <label class="-bold">Sexo:</label>
+                        <label class="-bold800--labels">Sexo:</label>
                         <input id="RSM" type="radio" name="Rsexo" value="M" checked/> Masculino
                         <input id="RSF" type="radio" name="Rsexo" value="F"> Feminino
                     </div>
                     <div class="telContato1 -inlineCont"  id="telContato1">
-                        <label class="-bold">Tel. Contato:</label>
+                        <label class="-bold800--labels">Tel. Contato:</label>
                         <input id="telCont1Input" type="text" placeholder="Tel contato principal"/>
                     </div>
                     <div class="telContato2 -inlineCont" id="telContato2">
-                        <label class="-bold">Tel. Contato 2:</label>
+                        <label class="-bold800--labels">Tel. Contato 2:</label>
                         <input id="telCont2Input" type="text" placeholder="Tel contato secundário"/>                  
                     </div>
                     <div id="email">
-                        <label class="-bold">E-Mail:</label>
+                        <label class="-bold800--labels">E-Mail:</label>
                         <input id="emailInput" type="text" placeholder="seuEmail@dominio.com"/>
                     </div>
                 </div>
-                <div class="clienteMoradia">
+                <div class="cliente-form--row-infosMoradia">
                     <div id="pais">
-                        <label class="-bold">Pais:</label></br>
-                        <select id="cb_pais">
+                        <label class="-bold800--labels">Pais:</label></br>
+                        <select class="main-select" id="cb_pais">
                             <option name="cb_pais" value="BR">
                                 Brasil
                             </option>
@@ -119,8 +131,8 @@
                         </select>
                     </div>
                     <div id="estado">
-                        <label class="-bold">Estado:</label></br>
-                        <select id="cb_estado">
+                        <label class="-bold800--labels">Estado:</label></br>
+                        <select class="main-select" id="cb_estado">
                             <option name="cb_estado">
                                 São Paulo
                             </option>
@@ -130,8 +142,8 @@
                         </select>
                     </div>
                     <div id="cidade">
-                        <label class="-bold">Cidade:</label></br>
-                        <select id="cb_cidade"> 
+                        <label class="-bold800--labels">Cidade:</label></br>
+                        <select class="main-select" id="cb_cidade"> 
                             <option name="cb_cidade">
                                 São Paulo
                             </option name="cb_cidade">
@@ -141,15 +153,15 @@
                         </select>
                     </div>
                     <div id="bairro">
-                        <label class="-bold">Bairro:</label></br>
+                        <label class="-bold800--labels">Bairro:</label></br>
                         <input id="bairroInput" type="text" placeholder="Digíte seu bairro"/>
                     </div>
                     <div id="Endereco">
-                        <label class="-bold">Endereço:</label></br>
+                        <label class="-bold800--labels">Endereço:</label></br>
                         <input id="enderecoInput" type="text" placeholder="Digíte seu endereço"/>
                     </div>
                     <div id="cep">
-                        <label class="-bold">Cep:</label></br>
+                        <label class="-bold800--labels">Cep:</label></br>
                         <input id="cepInput" type="text" placeholder="Digíte seu CEP"/>
                     </div>
                 </div>
@@ -157,11 +169,11 @@
 
         </form>
 
-        <div class="btn--row">
-            <button id="btnRegistrar" class="main-btn btnRegistrar" type="submit" onclick="handleBtnRegistrarClick()">Registrar</button>
-            <button class="main-btn btnAtualizar" type="submit" onclick="handleBtnAtualizarClick()" >Atualizar</button>
-            <button class="main-btn btnDeletar" type="submit" onclick="handleBtnDeletarClick()">Deletar</button>
-            <button class="main-btn btnLimpar" type="submit" onclick="handleBtnLimparClick()">Limpar</button>
+        <div class="main-btnRow ">
+            <button id="btnRegistrar" class="main-btn main-btnRow--principal" type="submit" onclick="handleBtnRegistrarClick()">Registrar</button>
+            <button class="main-btn main-btnRow--principal" type="submit" onclick="handleBtnAtualizarClick()" >Atualizar</button>
+            <button class="main-btn main-btnRow--principal" type="submit" onclick="handleBtnDeletarClick()">Deletar</button>
+            <button class="main-btn main-btnRow--principal" type="submit" onclick="handleBtnLimparClick()">Limpar</button>
         </div>
         <!-- Parei aqui -->
         <div class="modal fade" id="modalProcurar" aria-labelledby="modalLabel" aria-hidden="true">
