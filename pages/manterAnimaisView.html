@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- acrescimos para bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   
+    <!-- dependencias do bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/@popperjs/core@2"> </script> 
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <link href="./styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/manterAnimaisStyle.css">
+    <link rel="stylesheet" href="../components/main-title.css">
+    <link rel="stylesheet" href="../components/main-section.css">
+    <link rel="stylesheet" href="../components/main-form--row.css">
+    <link rel="stylesheet" href="../components/main-form--row-imgArea.css">
+    <link rel="stylesheet" href="../components/globais.css">
+    <link rel="stylesheet" href="../components/main-btnProcurar.css">
+    <link rel="stylesheet" href="../components/animal-form--row-infos.css">
+    <link rel="stylesheet" href="../components/main-select.css">
+    <link rel="stylesheet" href="../components/main-btnRow.css">
+    <link rel="stylesheet" href="../components/main-btn.css">
+
+    <title>Área do Animal</title>
+</head>
+<body>
+    <header class="cabeçalho">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand logo" href="../index.html">
+                    <i class="fas fa-hiking"></i>
+                    Home
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./manterClienteView.html">Cliente</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#"
+                                >Animal <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./manterFuncionariosView.html">Funcionário</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./manterCirurgiasView.html">Cirurgia</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="main-section">
+        <h1 class="main-title">Área do Animal</h1>
+        <form  class="main-form">
+            <div class="main-form--row">
+                <div class="main-form--row-imgArea">
+                    <img class="imgAnimal" src="https://i0.wp.com/i.pinimg.com/originals/4c/7a/cb/4c7acbb5aba8fcb4404b8b08d5ba14a0.png" />
+                    <label class="-bold800--labels">Data de Registro:</label>
+                    <input id="dtReg_animal" type="date"/>
+                    <script type="text/javascript">
+                        document.getElementById("dtReg_animal").value = new Date().toJSON().slice(0,10);
+                    </script>
+                </div>
+                <div class="animal-form--row-infos">
+                    <div>
+                        <label class="-bold800--labels"><span class="-colorRed">* </span>CPF do Dono:</label>
+                        <input class="-animalW47vh" id="animal_CPFDonoInput" type="text" required placeholder="CPF completo do dono"/>
+                        <a href="#" id="animal_btnProcurarCPF" class="main-btnProcurar" type="button" data-toggle="modal"
+                         onclick=""
+                                >Procurar
+                        </a>                 
+                    </div>
+                    <div>
+                        <label class="-bold800--labels"><span class="-colorRed">* </span>Nome do animal:</label>
+                        <input class="-animalW47vh" id="animal_nomeInput" type="text" required placeholder="Nome completo do animal"/>
+                        <a href="#" id="animal_btnProcurarNome" class="main-btnProcurar" type="button" data-toggle="modal"
+                         onclick=""
+                                >Procurar
+                        </a>                 
+                    </div>
+                    <div class="-inline">
+                        <div class="animal-divSexo">
+                            <label class="-bold800--labels">Sexo:</label>
+                            <input id="animal_RSM" type="radio" name="animal_Rsexo" value="M" checked/> Masculino
+                            <input id="animal_RSF" type="radio" name="animal_Rsexo" value="F"> Feminino
+                        </div>
+                        <div class="animal-divPeso">
+                            <label class="-bold800--labels">Peso atual (kg)</label>
+                            <input type="number" min="0" max="100" placeholder="Peso animal">
+                        </div>
+                    </div>
+                    <div class="-inline">
+                        <div class="animal_divEspecie">
+                            <label class="-bold800--labels">Espécie:</label>
+                            <select class="main-select" id="animal_cbEspecie">
+                                <option name="animal_cbEespecie" value="gato">
+                                    Gato
+                                </option>
+                                <option name="animal_cbEespecie" value="cachorro">
+                                    Cachorro
+                                </option>
+                                <option name="animal_cbEespecie" value="coelho">
+                                    Coelho
+                                </option>
+                            </select>
+                        </div>
+                        <div class="animal_divRaca">
+                            <label class="-bold800--labels">Raça:</label>
+                            <select class="main-select" id="animal_cbRaca">
+                                <option name="animal_cbRaca" value="gato">
+                                    Gato
+                                </option>
+                                <option name="animal_cbRaca" value="cachorro">
+                                    Cachorro
+                                </option>
+                                <option name="animal_cbRaca" value="coelho">
+                                    Coelho
+                                </option>
+                            </select>
+                        </div>                 
+                    </div>
+                    <div>
+                        <label class="-bold800--labels">Identificação, cor ou pelagem:</label>
+                        <input  id="animal_identificacaoInput" type="text" placeholder="Caramelo"/>
+                    </div>
+                    <div>
+                        <label class="-bold800--labels">Informações complementares:</label>
+                        <textarea name="animal_infosCompInput" cols="33" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="main-btnRow">
+            <button class="main-btn main-btnRow--principal" type="submit" onclick="">Registrar</button>
+            <button class="main-btn main-btnRow--principal" type="submit" onclick="" >Atualizar</button>
+            <button class="main-btn main-btnRow--principal" type="submit" onclick="">Deletar</button>
+            <button class="main-btn main-btnRow--principal" type="submit" onclick="">Limpar</button>
+        </div>
+
+    </section>
+    <footer>
+
+    </footer>
+</body>
+</html>
