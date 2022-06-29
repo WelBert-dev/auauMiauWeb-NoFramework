@@ -1,0 +1,33 @@
+body {
+    width: 100%;
+    background-color:  rgba(0, 225, 255, 0.952);
+}
+
+.-inline {
+    display: flex;
+}
+
+.-inline .animal-divPeso input {
+    width: 50%;
+    margin-left: 4%;
+}
+.-inline .animal-divPeso label {
+    width: 50%;
+    margin-left: 5%;
+}
+
+.-inline .animal_divEspecie {
+    flex: 1;
+}
+
+.-inline .animal_divRaca {
+    flex: 1;
+}
+
+#animal_identificacaoInput {
+    width: 25vw;
+}
+
+.-animalW47vh {
+    width:  19vw;
+}
